@@ -8,11 +8,10 @@ class MyApplication : DaggerApplication(){
     val APP_URL = "https://restcountries.eu/"
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        val applicationComponent : ApplicationComponent = DaggerApplicationComponent.builder()
+        return DaggerApplicationComponent.builder()
             .setUrl(APP_URL)
             .provideContext(this)
             .build()
-        return applicationComponent
     }
 
 }
