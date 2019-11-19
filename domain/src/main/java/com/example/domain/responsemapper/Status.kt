@@ -2,5 +2,6 @@ package com.example.domain.responsemapper
 
 enum class Status {
     SUCCESS,
-    ERROR
+    ERROR,
+    LOADING
 }

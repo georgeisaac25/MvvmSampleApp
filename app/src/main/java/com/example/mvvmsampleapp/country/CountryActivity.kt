@@ -1,5 +1,6 @@
 package com.example.mvvmsampleapp.country
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.responsemapper.Status
 import com.example.mvvmsampleapp.R
 import com.example.mvvmsampleapp.base.BaseView
+import com.example.mvvmsampleapp.util.ProgressDialog
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class CountryActivity : BaseView<CountryViewModel>() {
@@ -18,20 +21,19 @@ class CountryActivity : BaseView<CountryViewModel>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    lateinit var recyclerView: RecyclerView
-
     @Inject
     lateinit var countryAdapter: CountryAdapter
+
+    lateinit var dialog : Dialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        recyclerView = findViewById(R.id.recyclerView)
         val mLayoutManager = LinearLayoutManager(applicationContext)
         recyclerView.layoutManager = mLayoutManager
         recyclerView.itemAnimator = DefaultItemAnimator()
+        dialog = ProgressDialog.progressDialog(this)
     }
 
     override fun onStart() {
@@ -52,9 +54,13 @@ class CountryActivity : BaseView<CountryViewModel>() {
                     countryAdapter.setList(it.data)
                     recyclerView.visibility = View.VISIBLE
                     recyclerView.adapter = countryAdapter
+                    dialog.dismiss()
                 }
                 Status.ERROR -> {
-                    //Handle error
+                    dialog.dismiss()
+                }
+                Status.LOADING -> {
+                    dialog.show()
                 }
             }
         })

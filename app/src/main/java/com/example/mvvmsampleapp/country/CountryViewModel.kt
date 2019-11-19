@@ -14,11 +14,9 @@ class CountryViewModel(
     val useCase: GetCountryUseCase,
     val mapper: MapperForDomainAndPresenter<CountryUiModel, CountryUseCaseModel>
 ) : BaseViewModel() {
-    override fun observeData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     var countryData = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         val user = mapper.getPresenterModel(useCase.getCountry())
         emit(user)
     }
