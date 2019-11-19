@@ -6,5 +6,5 @@ import retrofit2.Call;
 
 interface ApiInterface {
     @GET("rest/v2/all/")
-    suspend fun  getCountries() : List<Country>
+    suspend fun getCountries(): List<Country>
 }

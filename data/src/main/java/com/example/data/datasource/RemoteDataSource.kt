@@ -5,9 +5,9 @@ import com.example.domain.responsemapper.ResponseHandler
 import com.example.data.remote.retrofit.responseForCountry.Country
 import com.example.domain.responsemapper.Resource
 
-class RemoteDataSource(val apiInterface : ApiInterface,val responseHandler: ResponseHandler) {
+class RemoteDataSource(val apiInterface: ApiInterface, val responseHandler: ResponseHandler) {
 
-    suspend fun getCountry() : Resource<List<Country>> {
+    suspend fun getCountry(): Resource<List<Country>> {
         return try {
             responseHandler.handleSuccess(apiInterface.getCountries())
         } catch (e: Exception) {

@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "countryTable", indices = arrayOf(Index(value = ["name"], unique = true)))
-class CountryEntity(){
+class CountryEntity() {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "did")

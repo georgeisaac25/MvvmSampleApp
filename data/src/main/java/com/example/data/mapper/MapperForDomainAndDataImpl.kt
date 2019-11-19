@@ -5,7 +5,7 @@ import com.example.domain.mapper.MapperForDomainAndData
 import com.example.domain.model.CountryUseCaseModel
 import com.example.domain.responsemapper.Resource
 
-class MapperForDomainAndDataImpl : MapperForDomainAndData<Country,CountryUseCaseModel>{
+class MapperForDomainAndDataImpl : MapperForDomainAndData<Country, CountryUseCaseModel>{
     override fun getUseCaseModel(n: Resource<List<Country>>): Resource<List<CountryUseCaseModel>> {
         var list : ArrayList<CountryUseCaseModel>? = ArrayList<CountryUseCaseModel>()
         for (i in n.data!!){

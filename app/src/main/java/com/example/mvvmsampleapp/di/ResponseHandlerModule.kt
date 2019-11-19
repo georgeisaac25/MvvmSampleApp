@@ -10,5 +10,5 @@ class ResponseHandlerModule {
 
     @ApplicationScope
     @Provides
-    fun provideResponseHandler() : ResponseHandler = ResponseHandler()
+    fun provideResponseHandler(): ResponseHandler = ResponseHandler()
 }

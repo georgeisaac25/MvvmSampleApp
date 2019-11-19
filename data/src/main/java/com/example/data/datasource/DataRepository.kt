@@ -8,12 +8,13 @@ import com.example.domain.model.CountryUseCaseModel
 import com.example.domain.responsemapper.Resource
 
 
-class DataRepository(val localDataSource: LocalDataSource, val remoteDataSource: RemoteDataSource
-    ,val mapper: MapperForDomainAndData<Country,CountryUseCaseModel>
+class DataRepository(
+    val localDataSource: LocalDataSource, val remoteDataSource: RemoteDataSource
+    , val mapper: MapperForDomainAndData<Country, CountryUseCaseModel>
 ) :
     RepositoryContract {
 
-    override suspend fun getCountry() : Resource<List<CountryUseCaseModel>> {
+    override suspend fun getCountry(): Resource<List<CountryUseCaseModel>> {
         val result: Resource<List<Country>> = remoteDataSource.getCountry()
         return mapper.getUseCaseModel(result)
     }

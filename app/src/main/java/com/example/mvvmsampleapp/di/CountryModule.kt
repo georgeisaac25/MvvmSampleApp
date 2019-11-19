@@ -26,53 +26,58 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 
-@Module(includes = [DatabaseModule::class,ApiModule::class,ResponseHandlerModule::class])
+@Module
 class CountryModule {
 
-    @ApplicationScope
+    @CountryScope
     @Provides
     fun provideMapperForDomainAndPresenter()
-            : CountryMapper  = CountryMapper()
+            : CountryMapper = CountryMapper()
 
-    @ApplicationScope
+    @CountryScope
     @Provides
-    fun provideViewModelFactory(useCase: GetCountryUseCase,mapper : CountryMapper): ViewModelProvider.Factory {
-        return ViewModelFactory(useCase,mapper)
+    fun provideViewModelFactory(
+        useCase: GetCountryUseCase,
+        mapper: CountryMapper
+    ): ViewModelProvider.Factory {
+        return ViewModelFactory(useCase, mapper)
     }
 
-    @ApplicationScope
+    @CountryScope
     @Provides
-    fun provideUseCase(repositoryContract: RepositoryContract) : GetCountryUseCase {
+    fun provideUseCase(repositoryContract: RepositoryContract): GetCountryUseCase {
         return GetCountryUseCase(repositoryContract)
     }
 
-    @ApplicationScope
+    @CountryScope
     @Provides
     fun provideMapperForDomainAndData()
-            : MapperForDomainAndData<Country, CountryUseCaseModel>  = MapperForDomainAndDataImpl()
+            : MapperForDomainAndData<Country, CountryUseCaseModel> = MapperForDomainAndDataImpl()
 
-    @ApplicationScope
+    @CountryScope
     @Provides
-    fun provideDataRepository(localDataSource: LocalDataSource,remoteDataSource: RemoteDataSource
-                              ,mapper: MapperForDomainAndData<Country, CountryUseCaseModel>)
+    fun provideDataRepository(
+        localDataSource: LocalDataSource, remoteDataSource: RemoteDataSource
+        , mapper: MapperForDomainAndData<Country, CountryUseCaseModel>
+    )
             : RepositoryContract {
-        return DataRepository(localDataSource,remoteDataSource,mapper)
+        return DataRepository(localDataSource, remoteDataSource, mapper)
     }
 
-    @ApplicationScope
+    @CountryScope
     @Provides
-    internal fun provideRemoteDataSource(apiInterface: ApiInterface,responseHandler: ResponseHandler)
+    fun provideRemoteDataSource(apiInterface: ApiInterface, responseHandler: ResponseHandler)
             : RemoteDataSource {
-        return RemoteDataSource(apiInterface,responseHandler)
+        return RemoteDataSource(apiInterface, responseHandler)
     }
 
-    @ApplicationScope
+    @CountryScope
     @Provides
     fun provideRepository(repoDao: CountryDao): LocalDataSource {
         return LocalDataSource(repoDao)
     }
 
-    @ApplicationScope
+    @CountryScope
     @Provides
     fun provideDao(database: AppDatabase): CountryDao {
         return database.countryDao()

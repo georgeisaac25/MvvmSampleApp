@@ -8,12 +8,10 @@ import com.example.mvvmsampleapp.mapper.MapperForDomainAndPresenter
 import javax.inject.Inject
 
 class ViewModelFactory @Inject
-constructor(private val useCase: GetCountryUseCase,val mapper: CountryMapper) : ViewModelProvider.Factory {
-
+constructor(private val useCase: GetCountryUseCase, val mapper: CountryMapper) :
+    ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CountryViewModel(useCase,mapper) as T
+        return CountryViewModel(useCase, mapper) as T
     }
-
-
 }

@@ -1,4 +1,7 @@
 package com.example.mvvmsampleapp.di
 
-class CountryScope {
-}
+import javax.inject.Scope
+
+@Scope
+@Retention
+annotation class CountryScope

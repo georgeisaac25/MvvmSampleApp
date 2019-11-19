@@ -10,7 +10,10 @@ import com.example.mvvmsampleapp.base.BaseViewModel
 import com.example.mvvmsampleapp.mapper.MapperForDomainAndPresenter
 import kotlinx.coroutines.Dispatchers
 
-class CountryViewModel(val useCase: GetCountryUseCase,val mapper: MapperForDomainAndPresenter<CountryUiModel,CountryUseCaseModel>) : BaseViewModel(){
+class CountryViewModel(
+    val useCase: GetCountryUseCase,
+    val mapper: MapperForDomainAndPresenter<CountryUiModel, CountryUseCaseModel>
+) : BaseViewModel() {
     override fun observeData() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }

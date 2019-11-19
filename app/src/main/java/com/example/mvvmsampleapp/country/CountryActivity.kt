@@ -38,7 +38,7 @@ class CountryActivity : BaseView<CountryViewModel>() {
     }
 
     override fun getViewModelInstance(): CountryViewModel {
-        return  ViewModelProviders.of(this, viewModelFactory)
+        return ViewModelProviders.of(this, viewModelFactory)
             .get(CountryViewModel::class.java)
     }
 

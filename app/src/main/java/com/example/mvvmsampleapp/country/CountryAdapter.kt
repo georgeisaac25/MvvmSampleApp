@@ -12,8 +12,6 @@ class CountryAdapter constructor(
     var listCountry: List<CountryUiModel>?
 ) : RecyclerView.Adapter<CountryAdapter.MyViewHolder>() {
 
-    //private var positionClicked: PositionOfItemClicked = clicked
-
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var countryName: TextView = itemView.findViewById(R.id.countryName)
         var image: ImageView = itemView.findViewById(R.id.imageView)

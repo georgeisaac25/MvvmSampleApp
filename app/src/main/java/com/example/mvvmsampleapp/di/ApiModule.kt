@@ -12,7 +12,7 @@ class ApiModule {
 
     @ApplicationScope
     @Provides
-    fun  getRetrofit(string: String): Retrofit {
+    fun getRetrofit(string: String): Retrofit {
         return Retrofit.Builder()
             .baseUrl(string)
             .addConverterFactory(GsonConverterFactory.create())
@@ -22,7 +22,7 @@ class ApiModule {
     @ApplicationScope
     @Provides
     @Named("URL")
-    fun setUrl(url:String) : String = url
+    fun setUrl(url: String): String = url
 
     @ApplicationScope
     @Provides

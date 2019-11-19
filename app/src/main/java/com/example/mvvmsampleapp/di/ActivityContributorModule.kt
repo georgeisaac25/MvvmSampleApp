@@ -6,6 +6,8 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 abstract class ActivityContributorModule {
-    @ContributesAndroidInjector
+
+    @CountryScope
+    @ContributesAndroidInjector(modules = [CountryModule::class])
     internal abstract fun contributeFirstActivity(): CountryActivity
 }

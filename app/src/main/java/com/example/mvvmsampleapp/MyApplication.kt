@@ -3,7 +3,7 @@ package com.example.mvvmsampleapp
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
-class MyApplication : DaggerApplication(){
+class MyApplication : DaggerApplication() {
 
     val APP_URL = "https://restcountries.eu/"
 
@@ -13,5 +13,4 @@ class MyApplication : DaggerApplication(){
             .provideContext(this)
             .build()
     }
-
 }
