@@ -8,9 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmsampleapp.R
 
-class CountryAdapter constructor(
-    var listCountry: List<CountryUiModel>?
-) : RecyclerView.Adapter<CountryAdapter.MyViewHolder>() {
+class CountryAdapter : RecyclerView.Adapter<CountryAdapter.MyViewHolder>() {
+
+    var listCountry: List<CountryUiModel>? = null
+
+    fun setList(listCountry: List<CountryUiModel>?) {
+        this.listCountry = listCountry
+    }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var countryName: TextView = itemView.findViewById(R.id.countryName)

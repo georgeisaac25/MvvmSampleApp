@@ -19,6 +19,8 @@ class CountryActivity : BaseView<CountryViewModel>() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     lateinit var recyclerView: RecyclerView
+
+    @Inject
     lateinit var countryAdapter: CountryAdapter
 
 
@@ -47,7 +49,7 @@ class CountryActivity : BaseView<CountryViewModel>() {
 
             when (it.status) {
                 Status.SUCCESS -> {
-                    countryAdapter = CountryAdapter(it.data)
+                    countryAdapter.setList(it.data)
                     recyclerView.visibility = View.VISIBLE
                     recyclerView.adapter = countryAdapter
                 }
