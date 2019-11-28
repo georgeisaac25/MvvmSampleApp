@@ -14,6 +14,7 @@ import androidx.test.runner.AndroidJUnit4
 import com.example.mvvmsampleapp.country.CountryActivity
 import com.example.mvvmsampleapp.util.EspressoIdlingResouce
 import junit.framework.Assert
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -26,7 +27,7 @@ class CountryActivityTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(CountryActivity::class.java,false,false)
+    var mActivityTestRule = ActivityTestRule(CountryActivity::class.java, false, false)
 
     @Before
     fun setUp() {
@@ -36,19 +37,31 @@ class CountryActivityTest {
     }
 
     @Test
-    fun showList_Test() {
-
-
-        val recyclerView : RecyclerView = mActivityTestRule.activity.findViewById(R.id.recyclerView)
-
-        onView(withId(R.id.recyclerView)).check(matches(
-            isDisplayed()))
-
-        Log.e("size",""+recyclerView.adapter?.itemCount)
-
+    fun showList_fromWs_Test() {
+        val recyclerView: RecyclerView = mActivityTestRule.activity.findViewById(R.id.recyclerView)
+        onView(withId(R.id.recyclerView)).check(
+            matches(
+                isDisplayed()
+            )
+        )
+        Log.e("size", "" + recyclerView.adapter?.itemCount)
         Assert.assertNotSame(0, recyclerView.adapter?.itemCount)
+    }
 
+    @Test
+    fun showList_fromDb_Test() {
+        val recyclerView: RecyclerView = mActivityTestRule.activity.findViewById(R.id.recyclerView)
+        onView(withId(R.id.recyclerView)).check(
+            matches(
+                isDisplayed()
+            )
+        )
+        Log.e("size", "" + recyclerView.adapter?.itemCount)
+        Assert.assertNotSame(0, recyclerView.adapter?.itemCount)
+    }
 
+    @After
+    fun destroy() {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResouce.getIdlingResource());
     }
 

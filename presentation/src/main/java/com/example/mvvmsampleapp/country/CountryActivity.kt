@@ -42,6 +42,8 @@ class CountryActivity : BaseView<CountryViewModel>() {
         recyclerView.itemAnimator = DefaultItemAnimator()
 
         recyclerView.visibility = View.VISIBLE
+        recyclerView.adapter = countryAdapter
+
 
 
 
@@ -74,19 +76,18 @@ class CountryActivity : BaseView<CountryViewModel>() {
                 Status.SUCCESS -> {
                     Log.e("Success","SUccess")
                     countryAdapter.setList(it.data)
-                    recyclerView.adapter = countryAdapter
+                    countryAdapter.notifyDataSetChanged()
                     EspressoIdlingResouce.decrement()
-                    //dialog.dismiss()
+                    dialog.dismiss()
                 }
                 Status.ERROR -> {
-                    //dialog.dismiss()
+                    dialog.dismiss()
                     Toast.makeText(this@CountryActivity,"Something went wrong",Toast.LENGTH_LONG).show()
                     EspressoIdlingResouce.decrement()
                 }
                 Status.LOADING -> {
                     EspressoIdlingResouce.increment();
-
-                    //dialog.show()
+                    dialog.show()
                 }
             }
         })
