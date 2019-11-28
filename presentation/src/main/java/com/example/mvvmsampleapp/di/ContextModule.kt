@@ -10,7 +10,5 @@ class ContextModule {
     @ApplicationScope
     @Provides
     @Named("APP_CONTEXT")
-    fun provideContext(context: Context): Context {
-        return context
-    }
+    fun provideContext(context: Context): Context  = context
 }

@@ -1,15 +1,16 @@
 package com.example.data.datasource
 
 import com.example.data.remote.retrofit.ApiInterface
-import com.example.domain.responsemapper.ResponseHandler
 import com.example.data.remote.retrofit.responseForCountry.Country
-import com.example.domain.responsemapper.Resource
+import com.example.domain.resultmapper.Result
+import com.example.domain.resultmapper.ResultHandler
 
-class RemoteDataSource(val apiInterface: ApiInterface, val responseHandler: ResponseHandler) {
+class RemoteDataSource(private val apiInterface: ApiInterface, private val responseHandler: ResultHandler) {
 
-    suspend fun getCountry(): Resource<List<Country>> {
+    suspend fun getCountry(): Result<List<Country>> {
         return try {
-            responseHandler.handleSuccess(apiInterface.getCountries())
+            var country = apiInterface.getCountries()
+            responseHandler.handleSuccess(country)
         } catch (e: Exception) {
             responseHandler.handleException(e)
         }

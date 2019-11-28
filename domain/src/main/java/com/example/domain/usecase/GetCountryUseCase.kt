@@ -2,10 +2,10 @@ package com.example.domain.usecase
 
 import com.example.domain.contract.RepositoryContract
 import com.example.domain.model.CountryUseCaseModel
-import com.example.domain.responsemapper.Resource
+import com.example.domain.resultmapper.Result
 
 class GetCountryUseCase(val repositoryContract: RepositoryContract) {
-    suspend fun getCountry(): Resource<List<CountryUseCaseModel>> {
+    suspend fun getCountry(): Result<List<CountryUseCaseModel>> {
         return repositoryContract.getCountry()
     }
 }

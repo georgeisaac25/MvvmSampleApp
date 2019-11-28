@@ -1,8 +1,8 @@
 package com.example.mvvmsampleapp.mapper
 
-import com.example.domain.responsemapper.Resource
+import com.example.domain.resultmapper.Result
 
 interface MapperForDomainAndPresenter<T,N> {
-    fun getUseCaseModel(n: Resource<List<T>>) : Resource<List<N>>
-    fun getPresenterModel(t: Resource<List<N>>) : Resource<List<T>>
+    fun getUseCaseModel(n: Result<List<T>>) : Result<List<N>>
+    fun getPresenterModel(t: Result<List<N>>) : Result<List<T>>
 }

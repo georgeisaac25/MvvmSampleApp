@@ -1,6 +1,6 @@
 package com.example.mvvmsampleapp.di
 
-import com.example.domain.responsemapper.ResponseHandler
+import com.example.domain.resultmapper.ResultHandler
 import com.example.mvvmsampleapp.ApplicationScope
 import dagger.Module
 import dagger.Provides
@@ -10,5 +10,5 @@ class ResponseHandlerModule {
 
     @ApplicationScope
     @Provides
-    fun provideResponseHandler(): ResponseHandler = ResponseHandler()
+    fun provideResponseHandler(): ResultHandler = ResultHandler()
 }

@@ -29,7 +29,7 @@ task clean(type: Delete) {
 
 ext {
     // sdk and tools
-    minSdkVersion = 15
+    minSdkVersion = 19
     targetSdkVersion = 28
     compileSdkVersion = 28
 
@@ -38,7 +38,7 @@ ext {
     robolectric = 3.6
     robolectric_idling = "3.0.1"
     rxAndroid = "2.0.2"
-    room_version = "2.2.1"
+    room_version = "2.2.2"
     retrofit = "2.6.0"
     gson = "2.0.2"
     lifecycle_version = "1.1.1"

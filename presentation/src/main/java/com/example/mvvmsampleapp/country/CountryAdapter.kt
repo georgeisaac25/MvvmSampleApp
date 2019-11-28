@@ -38,7 +38,11 @@ class CountryAdapter : RecyclerView.Adapter<CountryAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return listCountry!!.size
+        if (listCountry != null) {
+            return listCountry!!.size
+        } else {
+            return 0
+        }
     }
 
 

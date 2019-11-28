@@ -1,8 +1,8 @@
 package com.example.domain.mapper
 
-import com.example.domain.responsemapper.Resource
+import com.example.domain.resultmapper.Result
 
 interface MapperForDomainAndData<T, N> {
-    fun getUseCaseModel(n: Resource<List<T>>): Resource<List<N>>
-    fun getDataModel(t: Resource<List<N>>): Resource<List<T>>
+    fun getUseCaseModel(n: Result<List<T>>): Result<List<N>>
+    fun getDataModel(t: Result<List<N>>): Result<List<T>>
 }
