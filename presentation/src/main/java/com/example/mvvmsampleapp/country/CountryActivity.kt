@@ -48,11 +48,12 @@ class CountryActivity : BaseView<CountryViewModel>() {
 
 
         dialog = ProgressDialog.progressDialog(this)
+        observeData(getViewModelInstance())
+
     }
 
     override fun onStart() {
         super.onStart()
-        observeData(getViewModelInstance())
     }
 
     override fun getViewModelInstance(): CountryViewModel {
@@ -62,15 +63,10 @@ class CountryActivity : BaseView<CountryViewModel>() {
 
     override fun observeData(viewModel: CountryViewModel) {
 
-        /*recyclerView.viewTreeObserver
-            .addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    recyclerView.viewTreeObserver.removeOnGlobalLayoutListener(this)
-                    EspressoIdlingResouce.decrement();
 
-                }
-            })*/
 
+        // NOTE : Must observe livedata variable and
+        // not a method because VM only retains the variables
         viewModel.countryData.observe(this, Observer {
             when (it.status) {
                 Status.SUCCESS -> {
