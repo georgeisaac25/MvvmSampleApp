@@ -16,7 +16,6 @@ class CountryViewModel(
 
     var countryData = liveData {
         Log.e("checking","rotation")
-        delay(4000)
         emit(Result.loading(null))
         val user = mapper.getPresenterModel(useCase.getCountry())
         emit(user)
@@ -25,11 +24,10 @@ class CountryViewModel(
     // NOTE : Must observe livedata variable and
     // not a method because VM only retains the variables
 
-    /*fun getDetails() = liveData {
+    fun getDetails() = liveData {
         Log.e("checking","rotation")
-        delay(4000)
         emit(Result.loading(null))
         val user = mapper.getPresenterModel(useCase.getCountry())
         emit(user)
-    }*/
+    }
 }

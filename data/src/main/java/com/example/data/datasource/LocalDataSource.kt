@@ -6,7 +6,7 @@ import com.example.domain.resultmapper.ResultHandler
 import com.example.mvvmsampleapp.database.CountryDao
 import com.example.mvvmsampleapp.database.CountryEntity
 
-class LocalDataSource(var countryDao: CountryDao,private val responseHandler: ResultHandler)
+class LocalDataSource(private var countryDao: CountryDao,private val responseHandler: ResultHandler)
 {
     suspend fun getCountry(): Result<List<CountryEntity>> {
         return try {
